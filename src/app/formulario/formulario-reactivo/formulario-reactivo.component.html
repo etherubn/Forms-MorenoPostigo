@@ -1,0 +1,116 @@
+<h2>Formulario reactivo</h2>
+<form [formGroup]="formulario" (ngSubmit)="enviarDatos()">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input [formControl]="nombreControl" 
+                    type="text" 
+                    class="form-control" 
+                    id="name"
+                    [ngClass]="{'is-invalid':nombreControl.invalid && nombreControl.touched}"
+                    >
+                    <div class="form-text">Mínimo 4 caracteres</div>
+                    <app-form-error *ngIf="nombreControl.errors && nombreControl.touched" [formError]="nombreControl.errors"></app-form-error>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Apellido</label>
+                    <input 
+                    [formControl]="apellidoControl"
+                    type="text" 
+                    class="form-control" 
+                    id="lastName"
+                    [ngClass]="{'is-invalid': apellidoControl.invalid && apellidoControl.touched}"
+                    >
+                    <div class="form-text">
+                        <p>Mínimo 4 caractéres</p>
+                    </div>
+                    <app-form-error *ngIf="apellidoControl.errors && apellidoControl.touched" [formError]="apellidoControl.errors"></app-form-error>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="mail" class="form-label">Correo</label>
+                    <input 
+                    type="email" 
+                    class="form-control" 
+                    id="mail"
+                    [formControl]="correoControl"
+                    [ngClass]="{'is-invalid':correoControl.invalid && correoControl.touched}"
+                    >
+                    <div class="form-text">
+                        <p>Ingresar correo válido</p>
+                    </div>
+
+                    <app-form-error *ngIf="correoControl.errors && correoControl.touched" [formError]="correoControl.errors"></app-form-error>
+                </div>
+            </div>
+
+
+            <div class="col">
+                <div class="mb-3">
+                    <label for="city" class="form-label">Ciudad</label>
+                    <select  
+                    class="form-select" 
+                    id="city"
+                    [formControl]="ciudadControl"
+                    [ngClass]="{'is-invalid':ciudadControl.invalid && ciudadControl.touched}"
+                    >
+                    <option value="" selected>Seleccionar</option>
+                    <option>Lima</option>
+                    <option>Cusco</option>
+                    <option>Huamanga</option>
+                    <option>Arequipa</option>
+                    </select>
+                    <div class="form-text">
+                        <p>Seleccionar Ciudad</p>
+                    </div>
+                    <app-form-error *ngIf="ciudadControl.errors && ciudadControl.touched" [formError]="ciudadControl.errors"></app-form-error>
+                </div>
+
+
+
+
+                <div class="mb-3">
+                    <label for="direction" class="form-label">Dirección</label>
+                    <input 
+                    [formControl]="direccionControl"
+                    type="text" 
+                    class="form-control" 
+                    id="direction"
+                    [ngClass]="{'is-invalid': direccionControl.invalid && direccionControl.touched}"
+                    >
+                    <div class="form-text">
+                        Ingresar la dirección del domicilio
+                    </div>
+                    <app-form-error *ngIf="direccionControl.errors && direccionControl.touched" [formError]="direccionControl.errors"></app-form-error>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label for="school" class="form-label">Colegio actual</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="school"
+                    [formControl]="colegioControl"
+                    [ngClass]="{'is-invalid':colegioControl.invalid && colegioControl.touched}"
+                    >
+                    <div class="form-text">
+                        <p>Ingresar sede del colegio en la que se encuentra actualmente</p>
+                    </div>
+                    <app-form-error *ngIf="colegioControl.errors && colegioControl.touched" [formError]="colegioControl.errors"></app-form-error>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            
+        </div>
+            
+            
+    </div>
+    
+</form>
